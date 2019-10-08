@@ -17,61 +17,76 @@
     <div class="container">
 
         <div class="row">
-            <h1 class="bg-info p-5 text-center col-12">Train Schedule</h1>
-        </div>
-
-        <div class="row">
-            <div class="col-12 bg-info p-2 mt-4">
-                <h4>Current Train Schedule</h4>
-            </div>
-        </div>
-
-        <div class="row border border-info p-1">
-            <div class="col-3 font-weight-bold">Train Name</div>
-            <div class="col-3 font-weight-bold">Destination</div>
-            <div class="col-2 font-weight-bold">Frequency (min)</div>
-            <div class="col-2 font-weight-bold">Next Arrival</div>
-            <div class="col-2 font-weight-bold">Minutes Away</div>
-        </div>
-
-        <div class="row border border-info p-1">
-            <div class="col-3" id="name">Placeholder</div>
-            <div class="col-3" id="destination">Placeholder</div>
-            <div class="col-2" id="frequency">Placeholder</div>
-            <div class="col-2" id="nextArrival">Placeholder</div>
-            <div class="col-2" id="minutesAway">Placeholder</div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 bg-info p-2 mt-4">
-                <h4>Add Train</h4>
+            <div class="card col-12 bg-info p-5 text-center mb-4">
+                <h1>Train Schedule</h1>
             </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-12">
-                <label for="trainName">Train Name</label>
-                <input type="text" class="form-control" id="train-name">
+            <div class="col-12">
+                <div class="card border border-info">
+                    <div class="card-header bg-info p-2">
+                        <h4>Current Train Schedule</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleTable"></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="form-group col-12">
-                <label for="destination">Destination</label>
-                <input type="text" class="form-control" id="train-destination">
+
+            <div class="row">
+                <div class="col-12 mt-4 mb-4">
+                    <div class="card border border-primary">
+
+                        <div class="card-header bg-info">
+                            <h4>Add Train</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="trainName">Train Name</label>
+                                        <input type="text" class="form-control" id="train-name">
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="destination">Destination</label>
+                                        <input type="text" class="form-control" id="train-destination">
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="firstTime">First Arrival</label>
+                                        <input type="text" class="form-control" id="first-arrival">
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label for="firstTime">Frequency</label>
+                                        <input type="text" class="form-control" id="train-frequency">
+                                    </div>
+                                    <button type="submit" class="btn btn-info rounded col-2" id="submitButton">Add Train
+                                        to
+                                        Schedule</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group col-12">
-                <label for="firstTime">First Arrival</label>
-                <input type="text" class="form-control" id="first-arrival">
-            </div>
-            <div class="form-group col-12">
-                <label for="firstTime">Frequency</label>
-                <input type="text" class="form-control" id="train-frequency">
-            </div>
-            <button type="submit" class="btn btn-info rounded col-2" id="submitButton">Add Train to Schedule</button>
+
         </div>
 
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 </body>
 
