@@ -10,6 +10,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/CSS/style.css">
 
+
 </head>
 
 <body>
@@ -66,11 +67,12 @@
                                         <input type="text" class="form-control" id="train-destination">
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="firstTime">First Arrival</label>
+                                        <label for="firstTime">First Arrival - Please use military time in HH:MM
+                                            format</label>
                                         <input type="text" class="form-control" id="first-arrival">
                                     </div>
                                     <div class="form-group col-12">
-                                        <label for="firstTime">Frequency</label>
+                                        <label for="firstTime">Frequency (in minutes)</label>
                                         <input type="text" class="form-control" id="train-frequency">
                                     </div>
                                     <button type="submit" class="btn btn-info rounded col-2" id="submitButton">Add Train
@@ -85,8 +87,15 @@
 
         </div>
 
+        <!-- moment.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+        <!-- firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+        <!-- jquery-->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <!-- main javascript file -->
+        <script src="assets/JavaScript/main.js"></script>
 
 </body>
 
