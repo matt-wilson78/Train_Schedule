@@ -12,7 +12,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 //Initial variable setups
-var database = firebase.database;
+var database = firebase.database();
 
 var minutesTilTrain = 0;
 
@@ -60,4 +60,42 @@ $("#submitButton").on("click", function () {
     $("#train-destination").val("");
     $("#first-arrival").val("");
     $("#train-frequency").val("");
+});
+
+database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+
+    var trainToAdd = childSnapshot.val().trainToAdd;
+    var destinationToAdd = childSnapshot.val().destinationToAdd;
+    var firstArrivalToAdd = childSnapshot.val().firstArrivalToAdd;
+    var frequencyToAdd = childSnapshot.val().frequencyToAdd;
+    var nextTrain = childSnapshot.val().nextTrain;
+    var minutesTilTrain = childSnapshot.val().minutesTilTrain;
+
+    //Updating time information for items pulled from database (probably could have done this better, but it works...)
+    //Converting first arrival time
+    var firstArrivalConverted = moment(firstArrivalToAdd, "hh:mm").subtract(1, "years");
+    //Difference between first arrival & current time
+    var timeDifference = moment().diff(moment(firstArrivalConverted), "minutes");
+    //Gets a remainder to figure out minutes away with next step
+    var tRemainder = timeDifference % frequencyToAdd;
+    //Finds minutes until next train
+    var minutesTilTrain = frequencyToAdd - tRemainder;
+    //Next Train
+    var nextTrain = moment().add(minutesTilTrain, "minutes").format("hh:mm A");
+
+
+    //vars to insert train info into table
+    var tableRow = $("<tr>");
+    var trainNameData = $("<td>").text(trainToAdd);
+    var destinationData = $("<td>").text(destinationToAdd);
+    var frequencyData = $("<td>").text(frequencyToAdd + " mins");
+    var nextTrainData = $("<td>").text(nextTrain);
+    var minutesTilTrainData = $("<td>").text(minutesTilTrain);
+
+    //adding table data to a table row
+    tableRow.append(trainNameData, destinationData, frequencyData, nextTrainData, minutesTilTrainData);
+
+    //adding the table row to the table
+    $("#scheduleTable").append(tableRow);
+
 });
